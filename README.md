@@ -8,20 +8,25 @@ To write a program to implement the K Means Clustering for Customer Segmentation
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1.start the program.
+1. Import Necessary Libraries
 
-2.Import libraries.
+2. Load the Dataset
 
-3.Read the given CSV file.
+3. Explore the Data
 
-4.Import KMeans and use for loop to cluster the data.
+4. Check for Missing Values
 
-5.Predict the cluster and plot data graphs.
+5. **Apply the Elbow Method
 
-6.Print the outputs and end the program.
+6. Fit the K-Means Model
 
-7.End the program.
+7. Make Predictions
 
+8. Assign Cluster Labels to Data
+
+9. Visualize Clusters
+
+10. Plot Customer Segments
 ## Program:
 ```
 /*
@@ -41,25 +46,19 @@ data.isnull().sum()
 
 from sklearn.cluster import KMeans
 wcss= [] #with-in the cluster sum of square
-
 for i in range(1, 11):
     kmeans= KMeans(n_clusters = i , init= "k-means++")
     kmeans.fit(data.iloc[:, 3:])
     wcss.append(kmeans.inertia_)
-
 plt.plot(range(1,11) , wcss)
 plt.xlabel("No. of Clusters")
 plt.ylabel("wcss")
 plt.title("Elbow Method")
-
 km = KMeans(n_clusters= 5)
 km.fit(data.iloc[:, 3:])
-
 KMeans(n_clusters= 5)
-
 y_pred= km.predict(data.iloc[:,3:])
 y_pred
-
 data["cluster"]= y_pred
 df0=data[data["cluster"]==0]
 df1=data[data["cluster"]==1]
